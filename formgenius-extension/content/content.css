@@ -1,0 +1,274 @@
+/* FormGenius Content Script Styles */
+
+/* Highlights */
+.formgenius-highlight {
+    outline: 2px solid #2563eb !important;
+    outline-offset: 2px !important;
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    transition: all 0.2s ease !important;
+}
+
+.formgenius-highlight:hover {
+    outline-color: #1d4ed8 !important;
+    background-color: rgba(37, 99, 235, 0.2) !important;
+}
+
+/* Overlay */
+.formgenius-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    z-index: 999999 !important;
+    pointer-events: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Recording Panel */
+.formgenius-recording-panel {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 320px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    pointer-events: auto !important;
+    z-index: 1000000 !important;
+}
+
+.formgenius-recording-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 16px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.formgenius-recording-indicator {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: #dc2626 !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+}
+
+.formgenius-recording-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background: #dc2626 !important;
+    border-radius: 50% !important;
+    animation: formgenius-pulse 1.5s infinite !important;
+}
+
+@keyframes formgenius-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.formgenius-recording-actions {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.formgenius-recording-actions button {
+    padding: 6px 12px !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 4px !important;
+    background: white !important;
+    color: #374151 !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.formgenius-recording-actions button:hover {
+    background: #f3f4f6 !important;
+    border-color: #2563eb !important;
+}
+
+.formgenius-recording-content {
+    padding: 16px !important;
+}
+
+.formgenius-recording-content h4 {
+    margin: 0 0 12px 0 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+}
+
+.formgenius-action-item {
+    padding: 4px 0 !important;
+    font-size: 12px !important;
+    color: #6b7280 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+}
+
+.formgenius-action-item:last-child {
+    border-bottom: none !important;
+}
+
+/* Extraction Panel */
+.formgenius-extraction-panel {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 320px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    pointer-events: auto !important;
+    z-index: 1000000 !important;
+}
+
+.formgenius-extraction-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 16px !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    background: #f9fafb !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.formgenius-extraction-header h4 {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
+}
+
+.formgenius-extraction-actions {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.formgenius-extraction-actions button {
+    padding: 6px 12px !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 4px !important;
+    background: white !important;
+    color: #374151 !important;
+    font-size: 12px !important;
+    cursor: pointer !important;
+    transition: all 0.2s !important;
+}
+
+.formgenius-extraction-actions button:hover {
+    background: #f3f4f6 !important;
+    border-color: #2563eb !important;
+}
+
+.formgenius-extraction-content {
+    padding: 16px !important;
+}
+
+.formgenius-extraction-content p {
+    margin: 0 0 12px 0 !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #111827 !important;
+}
+
+.formgenius-selected-item {
+    padding: 4px 0 !important;
+    font-size: 12px !important;
+    color: #6b7280 !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+}
+
+.formgenius-selected-item:last-child {
+    border-bottom: none !important;
+}
+
+/* Notifications */
+.formgenius-notification {
+    position: fixed !important;
+    top: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 12px 20px !important;
+    border-radius: 6px !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    z-index: 1000001 !important;
+    animation: formgenius-slideIn 0.3s ease !important;
+}
+
+.formgenius-notification-success {
+    background: #10b981 !important;
+}
+
+.formgenius-notification-warning {
+    background: #f59e0b !important;
+}
+
+.formgenius-notification-error {
+    background: #dc2626 !important;
+}
+
+.formgenius-notification-info {
+    background: #2563eb !important;
+}
+
+@keyframes formgenius-slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Selected elements */
+.formgenius-selected {
+    outline: 2px solid #10b981 !important;
+    outline-offset: 2px !important;
+    background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+/* Hover effects for extractable elements */
+.formgenius-extractable-hover {
+    outline: 2px solid #2563eb !important;
+    outline-offset: 2px !important;
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    cursor: pointer !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .formgenius-recording-panel,
+    .formgenius-extraction-panel {
+        width: calc(100% - 40px) !important;
+        max-width: 320px !important;
+    }
+}
+
+/* Ensure high specificity */
+body .formgenius-overlay,
+html .formgenius-overlay {
+    position: fixed !important;
+    z-index: 999999 !important;
+}
+
+body .formgenius-recording-panel,
+html .formgenius-recording-panel,
+body .formgenius-extraction-panel,
+html .formgenius-extraction-panel {
+    z-index: 1000000 !important;
+}
+
+body .formgenius-notification,
+html .formgenius-notification {
+    z-index: 1000001 !important;
+}
+
