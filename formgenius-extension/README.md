@@ -1,157 +1,216 @@
 # FormGenius Chrome Extension
 
-Extensão do Chrome para automação de formulários e extração de dados.
-
-## Estrutura do Projeto
-
-```
-formgenius-extension/
-├── manifest.json          # Configuração da extensão
-├── popup/                 # Interface do popup
-│   ├── popup.html
-│   ├── popup.css
-│   └── popup.js
-├── content/               # Scripts injetados nas páginas
-│   ├── content.js
-│   └── content.css
-├── background/            # Service worker
-│   └── background.js
-├── icons/                 # Ícones da extensão
-│   ├── icon16.png
-│   ├── icon32.png
-│   ├── icon48.png
-│   └── icon128.png
-└── assets/               # Recursos adicionais
-```
+## Descrição
+Extensão do Google Chrome para o FormGenius - Ferramenta que permite preenchimento automático de formulários e extração de dados diretamente no navegador.
 
 ## Funcionalidades
 
-### 1. Gravação de Formulários
-- Grave o preenchimento de formulários automaticamente
-- Detecta campos de entrada automaticamente
-- Salva modelos reutilizáveis
+### 🔄 Preenchimento Automático
+- Detecta formulários automaticamente na página
+- Preenche campos com base em modelos salvos
+- Suporte a diferentes tipos de input (text, email, select, etc.)
+- Validação de dados antes do preenchimento
 
-### 2. Extração de Dados
-- Extraia dados de tabelas e listas
-- Seleção visual de elementos
-- Exportação em múltiplos formatos
+### 📊 Extração de Dados
+- Extrai dados de formulários existentes
+- Salva informações para reutilização
+- Cria modelos personalizados automaticamente
+- Exporta dados em formato JSON
 
-### 3. Gerenciamento de Modelos
-- Salve e organize seus modelos
-- Sugestões baseadas na página atual
-- Sincronização com dashboard web
+### 🎯 Interface Intuitiva
+- Popup compacto e funcional
+- Indicadores visuais na página
+- Feedback em tempo real
+- Integração seamless com o site
 
-## Instalação para Desenvolvimento
+### 🔐 Segurança
+- Autenticação segura com JWT
+- Dados criptografados
+- Permissões mínimas necessárias
+- Não armazena dados sensíveis localmente
 
-1. Abra o Chrome e vá para `chrome://extensions/`
-2. Ative o "Modo do desenvolvedor"
-3. Clique em "Carregar sem compactação"
-4. Selecione a pasta `formgenius-extension`
-
-## Configuração dos Ícones
-
-Para adicionar os ícones da extensão:
-
-1. Crie ou obtenha ícones PNG nos tamanhos:
-   - 16x16 pixels (icon16.png)
-   - 32x32 pixels (icon32.png)
-   - 48x48 pixels (icon48.png)
-   - 128x128 pixels (icon128.png)
-
-2. Coloque os arquivos na pasta `icons/`
-
-3. Os ícones devem representar o logo do FormGenius (raio/⚡)
-
-## Uso
-
-1. **Login**: Faça login com suas credenciais do FormGenius
-2. **Gravar Formulário**: 
-   - Clique em "Gravar Preenchimento"
-   - Preencha o formulário normalmente
-   - Clique em "Parar" para salvar o modelo
-3. **Extrair Dados**:
-   - Clique em "Extrair Dados"
-   - Selecione os elementos desejados
-   - Clique em "Finalizar" para extrair
-
-## Integração com API
-
-A extensão se conecta com o backend do FormGenius em:
-- Desenvolvimento: `http://localhost:5001/api`
-- Produção: `https://api.formgenius.com`
-
-## Permissões
-
-A extensão requer as seguintes permissões:
-- `activeTab`: Para interagir com a aba atual
-- `storage`: Para salvar dados localmente
-- `scripting`: Para injetar scripts nas páginas
-- `tabs`: Para gerenciar abas
-- `host_permissions`: Para acessar todos os sites
-
-## Desenvolvimento
-
-### Estrutura de Mensagens
-
-A extensão usa um sistema de mensagens entre componentes:
-
-```javascript
-// Popup -> Content Script
-chrome.tabs.sendMessage(tabId, {
-    action: 'startRecording',
-    userId: currentUser.id
-});
-
-// Content Script -> Background
-chrome.runtime.sendMessage({
-    action: 'saveFormModel',
-    data: modelData
-});
+## Estrutura do Projeto
+```
+formgenius-extension/
+├── manifest.json           # Configuração da extensão
+├── popup/
+│   ├── popup.html          # Interface do popup
+│   ├── popup.css           # Estilos do popup
+│   └── popup.js            # Lógica do popup
+├── content/
+│   ├── content.js          # Script injetado nas páginas
+│   └── content.css         # Estilos para elementos injetados
+├── background/
+│   └── background.js       # Service worker da extensão
+└── README.md
 ```
 
-### Estados da Extensão
+## Instalação
 
-- **Idle**: Estado padrão, mostra sugestões
-- **Recording**: Gravando ações do usuário
-- **Extracting**: Selecionando elementos para extração
-- **Processing**: Processando dados
+### 1. Download da Extensão
+Baixe os arquivos da extensão do repositório GitHub.
 
-### Armazenamento Local
+### 2. Instalação Manual (Modo Desenvolvedor)
+1. Abra o Chrome e vá para `chrome://extensions/`
+2. Ative o "Modo do desenvolvedor" no canto superior direito
+3. Clique em "Carregar sem compactação"
+4. Selecione a pasta `formgenius-extension`
+5. A extensão será instalada e aparecerá na barra de ferramentas
 
-A extensão usa `chrome.storage.local` para:
-- Dados do usuário autenticado
-- Modelos salvos localmente
-- Histórico de operações
-- Configurações da extensão
+### 3. Configuração
+1. Clique no ícone da extensão na barra de ferramentas
+2. Faça login com suas credenciais do FormGenius
+3. A extensão estará pronta para uso
+
+## Como Usar
+
+### 🚀 Preenchimento Automático
+1. Navegue até uma página com formulário
+2. Clique no ícone da extensão
+3. Selecione "Preencher Formulário"
+4. Escolha o modelo desejado
+5. Clique em "Aplicar"
+
+### 📥 Extração de Dados
+1. Navegue até uma página com formulário preenchido
+2. Clique no ícone da extensão
+3. Selecione "Extrair Dados"
+4. Revise os dados extraídos
+5. Salve como novo modelo
+
+### 📋 Gerenciar Modelos
+1. Acesse o popup da extensão
+2. Clique em "Meus Modelos"
+3. Visualize, edite ou exclua modelos
+4. Crie novos modelos personalizados
+
+## Permissões Necessárias
+
+### activeTab
+- Permite acesso à aba ativa
+- Necessário para detectar e interagir com formulários
+
+### storage
+- Armazena configurações e cache temporário
+- Não armazena dados sensíveis
+
+### host_permissions
+- Acesso a todos os sites (quando necessário)
+- Permite funcionamento em qualquer formulário web
+
+## Arquivos Principais
+
+### manifest.json
+Configuração da extensão com:
+- Versão e metadados
+- Permissões necessárias
+- Scripts de conteúdo
+- Service worker
+
+### popup.js
+Interface principal com:
+- Autenticação de usuário
+- Seleção de modelos
+- Controles de operação
+- Status de créditos
+
+### content.js
+Script injetado que:
+- Detecta formulários na página
+- Aplica preenchimento automático
+- Extrai dados de campos
+- Adiciona indicadores visuais
+
+### background.js
+Service worker que:
+- Gerencia comunicação com API
+- Mantém estado da extensão
+- Processa requisições em background
+
+## Integração com API
+A extensão se comunica com o backend através de:
+- **Endpoint**: https://w5hni7coz1jo.manus.space
+- **Autenticação**: JWT tokens
+- **Operações**: REST API calls
+- **Dados**: JSON format
+
+## Tipos de Formulário Suportados
+
+### ✅ Campos Suportados
+- Input text
+- Input email
+- Input password
+- Input number
+- Input tel
+- Textarea
+- Select dropdown
+- Radio buttons
+- Checkboxes
+
+### 🔄 Funcionalidades Avançadas
+- Detecção automática de tipo de campo
+- Validação de formato de dados
+- Preenchimento condicional
+- Suporte a formulários dinâmicos
+
+## Dados de Teste
+Para testar a extensão:
+- **Email**: test@formgenius.com
+- **Senha**: 123456
+- **Créditos**: 1000 (para testes)
 
 ## Troubleshooting
 
-### Problemas Comuns
+### Extensão não aparece
+- Verifique se o modo desenvolvedor está ativo
+- Recarregue a extensão em chrome://extensions/
 
-1. **Extensão não carrega**:
-   - Verifique se todos os arquivos estão presentes
-   - Verifique o console de extensões para erros
+### Não detecta formulários
+- Atualize a página
+- Verifique se o formulário tem campos válidos
+- Verifique permissões da extensão
 
-2. **Popup não abre**:
-   - Recarregue a extensão
-   - Verifique permissões
+### Erro de autenticação
+- Faça logout e login novamente
+- Verifique conexão com internet
+- Verifique se o backend está funcionando
 
-3. **Content script não funciona**:
-   - Verifique se a página permite scripts
-   - Recarregue a página após instalar a extensão
+## Desenvolvimento
 
-### Logs de Debug
+### Estrutura de Desenvolvimento
+```bash
+# Instalar dependências (se houver)
+npm install
 
-Para debug, abra:
-- Console do popup: Clique com botão direito no popup > Inspecionar
-- Console da página: F12 > Console
-- Console do background: chrome://extensions/ > Detalhes > Inspecionar visualizações
+# Testar localmente
+# Carregue a extensão no Chrome modo desenvolvedor
 
-## Próximas Funcionalidades
+# Build para produção
+# Compacte a pasta em .zip para publicação
+```
 
-- [ ] Sincronização offline
-- [ ] Modelos compartilhados
-- [ ] Agendamento de extrações
-- [ ] Integração com APIs externas
-- [ ] Suporte a mais tipos de elementos
+### Debug
+- Use Chrome DevTools para debug
+- Console do popup: clique direito no popup > Inspecionar
+- Console da página: F12 na página web
+- Background script: chrome://extensions/ > Detalhes > Inspecionar visualizações
+
+## Publicação na Chrome Web Store
+Para publicar na Chrome Web Store:
+1. Compacte todos os arquivos em .zip
+2. Acesse Chrome Web Store Developer Dashboard
+3. Faça upload do arquivo .zip
+4. Preencha metadados e screenshots
+5. Submeta para revisão
+
+## Contribuição
+Este projeto faz parte do sistema FormGenius. Para contribuir:
+1. Fork o repositório
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
+
+## Licença
+Projeto desenvolvido para fins educacionais e comerciais.
 
